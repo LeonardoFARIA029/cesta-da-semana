@@ -1,88 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cesta da Semana | Hortifruti para Universitários</title>
+  <meta name="description" content="Cesta da Semana com frutas, legumes e verduras frescos. Pensado para universitários. Peça pelo WhatsApp com frete reduzido para estudantes." />
+
+  <!-- Open Graph (prévia bonita ao compartilhar) -->
+  <meta property="og:title" content="Cesta da Semana | Hortifruti para Universitários" />
+  <meta property="og:description" content="Prático, econômico e direto no WhatsApp. Frete reduzido para estudantes. Entrega quarta e sexta." />
+  <meta property="og:type" content="website" />
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f7f7f7;
-      color: #333;
+    :root{
+      --bg:#f7fbf7;
+      --surface:#ffffff;
+      --surface2:#f1faf2;
+      --text:#0f2a1a;
+      --muted:#4b6a56;
+
+      --green:#1f7a4d;
+      --green2:#2ecc71;
+      --leaf:#e6f6ea;
+
+      --sand:#f2eadf;
+      --brown:#6a4a3b;
+
+      --line:rgba(15,42,26,.12);
+      --shadow: 0 18px 40px rgba(15,42,26,.10);
+      --shadow2: 0 10px 22px rgba(15,42,26,.08);
+      --radius: 18px;
+      --max: 1060px;
     }
 
-    .container {
-      max-width: 420px;
-      margin: auto;
-      padding: 20px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      line-height:1.45;
+      overflow-x:hidden;
     }
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 96px;}
+
+    /* --- Top bar --- */
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:8px 0 14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:-.2px;
+    }
+    .mark{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, #1f7a4d, #2ecc71);
+      box-shadow: var(--shadow2);
+      display:grid; place-items:center;
+      color:#0b2014;
+      font-size:18px;
+    }
+    .subbrand{
+      display:block;
+      font-weight:700;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      border-radius:999px;
+      box-shadow: 0 6px 14px rgba(15,42,26,.06);
+      font-weight:800;
+      color:var(--muted);
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
+    .chip strong{color:var(--text)}
+
+    /* --- Hero with leafy aesthetic --- */
+    .hero{
+      position:relative;
+      border-radius: 26px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(800px 420px at 12% 10%, rgba(46,204,113,.18), transparent 60%),
+        radial-gradient(720px 380px at 80% 20%, rgba(31,122,77,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+      box-shadow: var(--shadow);
     }
 
-    .cta {
-      background: #25D366;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      border-radius: 8px;
-      text-decoration: none;
-      display: block;
-      font-weight: bold;
-      margin: 20px 0;
+    /* Decorative layers (inspirado no seu template) */
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:520px; height:520px;
+      background: radial-gradient(circle at 30% 30%, rgba(31,122,77,.28), rgba(31,122,77,0) 60%);
+      transform: rotate(12deg);
+      filter: blur(0px);
+      pointer-events:none;
+      animation: floatA 9s ease-in-out infinite;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -140px -180px auto;
+      width:640px; height:640px;
+      background: radial-gradient(circle at 40% 40%, rgba(242,234,223,.75), rgba(242,234,223,0) 60%);
+      transform: rotate(-8deg);
+      pointer-events:none;
+      animation: floatB 11s ease-in-out infinite;
     }
 
-    .box {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 15px;
+    @keyframes floatA{
+      0%,100%{ transform: translateY(0) rotate(12deg); }
+      50%{ transform: translateY(10px) rotate(16deg); }
+    }
+    @keyframes floatB{
+      0%,100%{ transform: translateY(0) rotate(-8deg); }
+      50%{ transform: translateY(-10px) rotate(-12deg); }
     }
 
-    .badge {
-      background: #e8f5e9;
-      color: #2e7d32;
-      padding: 6px 10px;
-      border-radius: 20px;
+    .heroGrid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      padding:22px;
+    }
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns: 1fr;}
+    }
+
+    .badgeRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-bottom: 14px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(15,42,26,.14);
+      background: rgba(255,255,255,.72);
+      color: rgba(15,42,26,.84);
+      font-weight:900;
+      font-size:13px;
+      box-shadow: 0 8px 20px rgba(15,42,26,.06);
+      backdrop-filter: blur(8px);
+    }
+
+    h1{
+      margin: 6px 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -.8px;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.7vw, 18px);
+      max-width: 62ch;
+    }
+
+    .ctaRow{
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 16px;
+      border-radius: 16px;
+      border:1px solid rgba(15,42,26,.16);
+      background: rgba(255,255,255,.75);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:1000;
+      min-width: 240px;
+      box-shadow: 0 10px 24px rgba(15,42,26,.08);
+      transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(15,42,26,.12);
+      background: rgba(255,255,255,.92);
+    }
+    .btnPrimary{
+      border-color: rgba(31,122,77,.25);
+      background: linear-gradient(180deg, rgba(46,204,113,.95), rgba(31,122,77,.92));
+      color:#071a10;
+    }
+    .btnPrimary:hover{
+      background: linear-gradient(180deg, rgba(58,220,128,.98), rgba(31,122,77,.96));
+    }
+    .note{
+      color: var(--muted);
+      font-weight:800;
       font-size: 13px;
-      display: inline-block;
-      margin-bottom: 10px;
     }
-  </style>
-</head>
 
-<body>
-  <div class="container">
+    .sideCard{
+      border-radius: 22px;
+      border:1px solid rgba(15,42,26,.14);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 14px 34px rgba(15,42,26,.10);
+      padding:16px;
+      backdrop-filter: blur(10px);
+    }
+    .sideCard h2{
+      margin:0 0 6px;
+      font-size: 16px;
+      letter-spacing: -.2px;
+    }
+    .miniGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+    .mini{
+      border:1px solid rgba(15,42,26,.14);
+      background: rgba(241,250,242,.7);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .mini .big{
+      font-weight:1000;
+      font-size: 16px;
+      letter-spacing:-.2px;
+    }
+    .mini .small{
+      margin-top:4px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight:800;
+    }
 
-    <span class="badge">🎓 Frete reduzido para estudantes</span>
+    /* --- Sections --- */
+    .section{
+      margin-top:16px;
+      padding:18px;
+      border-radius: 22px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.80);
+      box-shadow: 0 12px 30px rgba(15,42,26,.06);
+    }
+    .section h3{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.3px;
+    }
+    .muted{color: var(--muted); font-weight:700;}
 
-    <h1>🥬 Cesta da Semana para Universitários</h1>
-    <p>Frutas, legumes e verduras frescos, entregues na sua casa.  
-    Prático, econômico e direto pelo WhatsApp.</p>
-
-    <a class="cta" href="https://wa.me/55SEUDDDSEUNUMERO?text=Oi!+Vim+pela+Cesta+da+Semana+🥬+Sou+estudante+e+quero+saber+as+opções!">
-      👉 Quero saber a Cesta da Semana
-    </a>
-
-    <div class="box">
-      <h3>📦 Tamanhos disponíveis</h3>
-      <p><strong>P:</strong> 7 itens • 1 troca</p>
-      <p><strong>M:</strong> 11 itens • mais pedida</p>
-      <p><strong>G:</strong> 15 itens • ideal para repúblicas</p>
-      <p><em>Valores informados no WhatsApp.</em></p>
-    </div>
-
-    <div class="box">
-      <h3>🔄 Como funciona</h3>
-      <p>1️⃣ Chame no WhatsApp</p>
-      <p>2️⃣ Escolha P, M ou G</p>
-      <p>3️⃣ Receba na quarta ou sexta</p>
-    </div>
-
-  </div>
-</body>
-</html>
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width: 900px){
+      .cards{grid-template-columns: 1fr;}
+    }
+    .card{
+      border-radius: 20px;
+      border:1px solid rgba(15,
