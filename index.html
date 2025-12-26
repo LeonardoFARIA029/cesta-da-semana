@@ -4,350 +4,471 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cesta da Semana | Hortifruti para Universitários</title>
-  <meta name="description" content="Cesta da Semana com frutas, legumes e verduras frescos. Pensado para universitários. Peça pelo WhatsApp com frete reduzido para estudantes." />
+  <meta name="description" content="Cesta da Semana com frutas, legumes e verduras frescos. Pensado para universitários. Peça pelo WhatsApp com frete reduzido." />
+
+  <!-- Font (estilo Wix / e-commerce clean) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#ffffff;
-      --ink:#0f2418;
-      --muted:#5b6e62;
-      --line:rgba(15,36,24,.10);
+      --bg:#fbfdfb;
+      --surface:#ffffff;
+      --surface2:#f3faef;
 
-      --green:#1f7a4d;
-      --green-2:#2ecc71;
-      --green-soft:#e9f7ef;
+      --text:#0f2418;
+      --muted:#5e7568;
 
-      --shadow: 0 14px 30px rgba(15,36,24,.10);
-      --shadow-soft: 0 10px 22px rgba(15,36,24,.06);
-      --r:18px;
-      --max:1080px;
+      --green:#77b63f;     /* e-commerce green */
+      --green2:#4e9a2a;    /* darker green */
+      --greenSoft:#eff9e8; /* soft background */
+      --orange:#ff8a3d;    /* small accent if needed */
+
+      --line: rgba(15,36,24,.10);
+      --shadow: 0 18px 50px rgba(15,36,24,.10);
+      --shadow2: 0 10px 26px rgba(15,36,24,.08);
+
+      --r: 22px;
+      --max: 1120px;
+
+      --containerPad: 22px;
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:body{
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
-}
-h1, h2, h3{
-  font-family: Fraunces, ui-serif, Georgia, serif;
-  letter-spacing: -0.6px;
-}
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 96px;}
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: radial-gradient(900px 520px at 85% -10%, rgba(119,182,63,.18), transparent 60%),
+                  radial-gradient(900px 520px at 0% 10%, rgba(78,154,42,.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.45;
+      overflow-x:hidden;
+    }
 
-    /* Top */
-    .top{
-      display:flex; justify-content:space-between; align-items:center;
-      gap:12px; padding:10px 0 18px;
-    }
-    .brand{
-      display:flex; gap:10px; align-items:center;
-      font-weight:900; letter-spacing:-.2px;
-    }
-    .mark{
-      width:38px; height:38px; border-radius:14px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, var(--green), var(--green-2));
-      color:#052010;
-      box-shadow: var(--shadow-soft);
-    }
-    .subbrand{display:block; font-size:12px; color:var(--muted); font-weight:700; margin-top:2px;}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding: var(--containerPad) 18px 110px;}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+    .muted{color:var(--muted)}
     .pill{
-      border:1px solid var(--line);
-      background: #fff;
-      border-radius:999px;
+      display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
-      color:var(--muted);
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 10px 20px rgba(15,36,24,.06);
       font-weight:800;
+      color: var(--muted);
       white-space:nowrap;
     }
-    .pill b{color:var(--ink)}
+    .pill b{color:var(--text)}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      font-size:13px;
+      font-weight:900;
+      color: rgba(15,36,24,.86);
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background: rgba(251,253,251,.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15,36,24,.06);
+    }
+    .headerInner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, var(--green), var(--green2));
+      box-shadow: var(--shadow2);
+      color:#0b2214;
+      font-size:18px;
+    }
+    .brand small{display:block; font-weight:800; color:var(--muted); margin-top:2px;}
+    nav{display:flex; gap:14px; align-items:center;}
+    nav a{
+      font-weight:800;
+      color: rgba(15,36,24,.72);
+      padding:10px 10px;
+      border-radius: 12px;
+    }
+    nav a:hover{background: rgba(119,182,63,.12); color: rgba(15,36,24,.90);}
+    .headerCta{
+      display:flex; gap:10px; align-items:center;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:13px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(15,36,24,.12);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 22px rgba(15,36,24,.06);
+      font-weight:1000;
+      transition: transform .12s ease, box-shadow .18s ease, background .18s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(15,36,24,.10);
+      background: #fff;
+    }
+    .btnPrimary{
+      background: linear-gradient(180deg, var(--green), var(--green2));
+      border-color: rgba(0,0,0,.06);
+      color:#0b2214;
+    }
+    .btnPrimary:hover{
+      background: linear-gradient(180deg, #86c84b, #4b9827);
+    }
+    .btnGhost{
+      background: rgba(119,182,63,.10);
+      border-color: rgba(119,182,63,.22);
+      color: rgba(15,36,24,.92);
+      box-shadow: none;
+    }
+    .btnGhost:hover{background: rgba(119,182,63,.16);}
 
     /* Hero */
     .hero{
+      margin-top: 18px;
       display:grid;
       grid-template-columns: 1.05fr .95fr;
       gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 900px){
+    @media (max-width: 980px){
       .hero{grid-template-columns:1fr;}
+      nav{display:none;}
     }
 
     .heroLeft{
-      padding:26px;
       border:1px solid var(--line);
-      border-radius: 26px;
-      background: linear-gradient(180deg, #ffffff, #fbfffd);
-      box-shadow: var(--shadow-soft);
+      border-radius: calc(var(--r) + 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(243,250,239,.62));
+      box-shadow: var(--shadow2);
+      padding: 26px;
       position:relative;
       overflow:hidden;
     }
-    /* detalhe sutil “folha” */
-    .heroLeft::before{
+    .heroLeft:before{
       content:"";
       position:absolute;
+      right:-180px; top:-180px;
       width:420px; height:420px;
-      right:-220px; top:-220px;
-      background: radial-gradient(circle at 30% 30%, rgba(46,204,113,.18), transparent 60%);
+      background: radial-gradient(circle at 35% 35%, rgba(119,182,63,.25), transparent 62%);
+      transform: rotate(12deg);
       pointer-events:none;
-      transform: rotate(10deg);
     }
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px;}
-    .badge{
-      font-size:13px;
-      font-weight:900;
-      color:rgba(15,36,24,.78);
-      border:1px solid var(--line);
-      background:#fff;
-      padding:8px 10px;
-      border-radius:999px;
-    }
+
+    .heroBadges{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;}
     h1{
-      margin:8px 0 10px;
-      font-size: clamp(30px, 4vw, 46px);
-      line-height:1.05;
-      letter-spacing:-.9px;
+      margin: 8px 0 10px;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height:1.02;
+      letter-spacing: -1px;
     }
-    .lead{margin:0; color:var(--muted); font-size: clamp(15px, 1.8vw, 18px); max-width: 62ch;}
+    .lead{
+      margin:0;
+      font-size: clamp(15px, 1.7vw, 18px);
+      color: var(--muted);
+      max-width: 62ch;
+      font-weight:600;
+    }
+    .ctaRow{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:12px;
+    }
+    .micro{
+      font-size:13px;
+      color: var(--muted);
+      font-weight:800;
+    }
 
-    .ctaRow{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:18px;}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:14px 16px;
-      border-radius: 14px;
-      border:1px solid rgba(15,36,24,.14);
-      background:#fff;
-      text-decoration:none;
-      font-weight:1000;
-      min-width: 240px;
-      transition: transform .12s ease, box-shadow .2s ease;
-      box-shadow: 0 10px 22px rgba(15,36,24,.06);
-    }
-    .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 30px rgba(15,36,24,.10);}
-    .btnPrimary{
-      background: linear-gradient(180deg, var(--green-2), var(--green));
-      border-color: rgba(31,122,77,.20);
-      color:#071a10;
-    }
-    .smallNote{color:var(--muted); font-weight:800; font-size:13px;}
-
-    /* Hero image panel */
     .heroRight{
-      border-radius: 26px;
-      overflow:hidden;
+      border-radius: calc(var(--r) + 10px);
       border:1px solid var(--line);
       box-shadow: var(--shadow);
-      background: var(--green-soft);
+      overflow:hidden;
       position:relative;
-      min-height: 320px;
+      min-height: 360px;
+      background: var(--greenSoft);
     }
-    .heroRight .img{
+    .heroImage{
       position:absolute; inset:0;
       background-size: cover;
       background-position: center;
-      filter: saturate(1.05) contrast(1.03);
-      transform: scale(1.02);
+      transform: scale(1.03);
+      filter: saturate(1.05) contrast(1.05);
     }
-    .heroRight::after{
-      content:"";
+    .heroOverlay{
       position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.60) 35%, rgba(255,255,255,0) 65%);
-      pointer-events:none;
+      background: linear-gradient(90deg, rgba(251,253,251,.94) 0%, rgba(251,253,251,.72) 42%, rgba(251,253,251,0) 70%);
     }
-    .heroRight .overlay{
+    .heroCard{
       position:relative;
-      padding:22px;
-      max-width: 420px;
+      padding: 22px;
+      max-width: 460px;
     }
-    .kpis{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:12px; margin-top:12px;
+    .heroCard h2{
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: -.3px;
+    }
+    .kpiGrid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
     }
     .kpi{
       border:1px solid rgba(15,36,24,.12);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.88);
       border-radius: 16px;
       padding:12px;
-      box-shadow: 0 10px 20px rgba(15,36,24,.06);
+      box-shadow: 0 10px 22px rgba(15,36,24,.06);
     }
-    .kpi .big{font-weight:1000;}
-    .kpi .small{margin-top:4px; color:var(--muted); font-weight:800; font-size:12px;}
+    .kpi .big{font-weight:1000}
+    .kpi .small{margin-top:4px; font-size:12px; font-weight:800; color:var(--muted);}
 
     /* Sections */
-    .section{
+    section.block{
       margin-top:18px;
-      padding:18px;
       border:1px solid var(--line);
-      border-radius: 22px;
-      background:#fff;
-      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,.90);
+      border-radius: calc(var(--r) + 6px);
+      box-shadow: var(--shadow2);
+      padding:18px;
     }
-    .section h2{margin:0 0 10px; font-size:18px; letter-spacing:-.3px;}
-    .muted{color:var(--muted); font-weight:700;}
+    .blockTitle{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      margin-bottom: 10px;
+    }
+    .blockTitle h3{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -.3px;
+    }
 
     .cards{
-      display:grid; grid-template-columns: repeat(3,1fr);
-      gap:12px; margin-top:12px;
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
     }
-    @media (max-width: 900px){
-      .cards{grid-template-columns: 1fr;}
+    @media (max-width: 980px){
+      .cards{grid-template-columns:1fr;}
     }
+
     .card{
       border:1px solid rgba(15,36,24,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(243,250,239,.68));
       border-radius: 18px;
       padding:14px;
-      background: linear-gradient(180deg, #ffffff, #fbfffd);
-      transition: transform .12s ease, box-shadow .2s ease;
+      transition: transform .14s ease, box-shadow .2s ease;
     }
-    .card:hover{transform: translateY(-2px); box-shadow: 0 14px 28px rgba(15,36,24,.08);}
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(15,36,24,.10);
+    }
     .tag{
-      display:inline-flex; gap:8px; align-items:center;
+      display:inline-flex; align-items:center; gap:8px;
       padding:7px 10px;
-      border-radius:999px;
-      background: var(--green-soft);
-      border:1px solid rgba(31,122,77,.14);
+      border-radius: 999px;
+      background: rgba(119,182,63,.14);
+      border:1px solid rgba(119,182,63,.22);
       font-size:12px;
       font-weight:1000;
-      color: rgba(15,36,24,.84);
-      margin-bottom:10px;
+      color: rgba(15,36,24,.88);
       white-space:nowrap;
+      margin-bottom:10px;
     }
-    .card h3{margin:2px 0 6px; font-size:16px;}
-    ul{margin:10px 0 0 18px; color:var(--muted); font-weight:700;}
-    li{margin:6px 0}
+    .card h4{margin:2px 0 6px; font-size:16px; letter-spacing:-.2px;}
+    .card ul{margin:10px 0 0 18px; color:var(--muted); font-weight:700;}
+    .card li{margin:6px 0}
 
-    .steps{display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:12px;}
-    @media (max-width: 900px){
+    .steps{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){
       .steps{grid-template-columns:1fr;}
     }
     .step{
       border:1px solid rgba(15,36,24,.10);
+      background: var(--greenSoft);
       border-radius: 18px;
       padding:14px;
-      background: var(--green-soft);
     }
     .num{
-      width:34px; height:34px; border-radius: 14px;
+      width:34px; height:34px;
+      border-radius: 14px;
       display:grid; place-items:center;
-      background:#fff;
+      background: rgba(255,255,255,.92);
       border:1px solid rgba(15,36,24,.10);
       font-weight:1000;
       margin-bottom:10px;
     }
+    .stepTitle{font-weight:1000}
+    .stepText{margin-top:6px; color:var(--muted); font-weight:700;}
 
     details{
       border:1px solid rgba(15,36,24,.10);
+      background: rgba(255,255,255,.92);
       border-radius: 18px;
       padding:12px 14px;
       margin-top:10px;
-      background: #fff;
     }
     summary{cursor:pointer; font-weight:1000;}
     details p{margin:8px 0 0; color:var(--muted); font-weight:700;}
 
-    /* Reveal animation */
+    .footer{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+      padding: 6px 2px;
+    }
+
+    /* Reveal */
     .reveal{opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease;}
     .reveal.show{opacity:1; transform: translateY(0);}
 
-    /* Floating CTA */
+    /* Floating WhatsApp bar */
     .float{
       position:fixed;
       left:50%;
       transform:translateX(-50%);
       bottom:14px;
-      width:min(560px, calc(100% - 28px));
+      width:min(600px, calc(100% - 28px));
       padding:10px;
       border-radius: 22px;
       border:1px solid rgba(15,36,24,.12);
       background: rgba(255,255,255,.92);
       box-shadow: var(--shadow);
-      z-index:999;
+      z-index: 999;
     }
-    .floatInner{display:flex; gap:10px; align-items:center; justify-content:space-between;}
-    .floatText{font-weight:1000;}
+    .floatInner{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .floatText{font-weight:1000; letter-spacing:-.2px;}
     .floatSmall{margin-top:2px; font-size:12px; color:var(--muted); font-weight:800;}
     .miniBtn{
       padding:12px 14px;
       border-radius: 14px;
       font-weight:1000;
-      text-decoration:none;
-      background: linear-gradient(180deg, var(--green-2), var(--green));
-      border:1px solid rgba(31,122,77,.18);
-      color:#071a10;
+      background: linear-gradient(180deg, var(--green), var(--green2));
+      border:1px solid rgba(0,0,0,.06);
+      color:#0b2214;
       white-space:nowrap;
     }
-
-    .footer{
-      margin-top:18px;
-      color:var(--muted);
-      font-weight:800;
-      font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+    .miniBtn:hover{filter: brightness(1.02);}
 
     @media (prefers-reduced-motion: reduce){
       *{animation:none !important; transition:none !important;}
+      html{scroll-behavior:auto}
     }
   </style>
 </head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <body>
-  <div class="wrap">
-    <header class="top reveal">
+  <!-- HEADER -->
+  <header>
+    <div class="headerInner">
       <div class="brand">
-        <div class="mark">🥬</div>
+        <div class="logo">🥬</div>
         <div>
           <div>Cesta da Semana</div>
-          <span class="subbrand">Hortifruti para universitários</span>
+          <small>Hortifruti para universitários</small>
         </div>
       </div>
-      <div class="pill">📅 Entrega <b>quarta</b> e <b>sexta</b></div>
-    </header>
 
-    <main class="hero">
-      <section class="heroLeft reveal">
-        <div class="badges">
-          <div class="badge">🎓 Frete reduzido para estudantes</div>
-          <div class="badge">🔁 1 troca por item similar</div>
-          <div class="badge">📦 P • M • G</div>
+      <nav>
+        <a href="#tamanhos">Tamanhos</a>
+        <a href="#como">Como funciona</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+
+      <div class="headerCta">
+        <span class="pill">📅 Entrega <b>quarta</b> & <b>sexta</b></span>
+        <a class="btn btnPrimary" href="https://wa.me/55SEUDDDSEUNUMERO?text=Oi!+Vim+pela+landing+da+Cesta+da+Semana+🥬+Sou+estudante+e+quero+saber+as+opções+(P/M/G).+Faculdade:+____+Bairro:+____">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="heroLeft reveal">
+        <div class="heroBadges">
+          <span class="badge">🎓 Frete reduzido para estudantes</span>
+          <span class="badge">🔁 1 troca por item similar</span>
+          <span class="badge">📦 P • M • G</span>
         </div>
 
-        <h1>Cesta da Semana que cabe na rotina da faculdade.</h1>
+        <h1>Cesta da Semana que facilita a vida na faculdade.</h1>
         <p class="lead">
-          Frutas, legumes e verduras frescos, com entrega programada.
-          Você chama no WhatsApp, escolhe o tamanho e recebe em casa.
+          Frutas, legumes e verduras frescos com entrega organizada.
+          Você pede no WhatsApp, escolhe o tamanho e recebe em casa.
+          <b>Preços e itens</b> são informados no WhatsApp.
         </p>
 
         <div class="ctaRow">
-          <a class="btn btnPrimary" href="https://wa.me/55SEUDDDSEUNUMERO?text=Oi!+Vim+pela+Cesta+da+Semana+🥬+Sou+estudante+e+quero+saber+as+opções+(P/M/G).+Faculdade:+____+Bairro:+____">
+          <a class="btn btnPrimary" href="https://wa.me/55SEUDDDSEUNUMERO?text=Oi!+Quero+saber+a+Cesta+da+Semana+(P/M/G)+🥬+Sou+estudante.+Faculdade:+____+Bairro:+____">
             👉 Quero saber a Cesta da Semana
           </a>
-          <a class="btn" href="#tamanhos">Ver tamanhos</a>
-          <div class="smallNote">Resposta rápida • valores no WhatsApp</div>
+          <a class="btn btnGhost" href="#tamanhos">Ver tamanhos</a>
+          <span class="micro">Resposta rápida • sem compromisso</span>
         </div>
-      </section>
+      </div>
 
-      <aside class="heroRight reveal" aria-label="Painel visual">
-        <!-- Troque a imagem abaixo por uma sua (ou mantenha esse gradiente) -->
-        <div class="img" style="background-image:
-          url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80');">
-        </div>
+      <div class="heroRight reveal" aria-label="Imagem do hortifruti">
+        <!-- Troque a imagem aqui se quiser (ideal: foto sua da cesta) -->
+        <div class="heroImage" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="heroOverlay"></div>
 
-        <div class="overlay">
-          <div class="badge" style="display:inline-flex;">🧾 Pedidos & entregas</div>
-          <div class="muted" style="margin-top:8px;">
-            Organização sem estresse:
-          </div>
+        <div class="heroCard">
+          <span class="badge">🗓️ Pedidos & Entregas</span>
+          <h2 style="margin:10px 0 6px;">Organizado do jeito que universitário precisa</h2>
+          <div class="muted" style="font-weight:700;">Sem confusão de datas:</div>
 
-          <div class="kpis">
+          <div class="kpiGrid">
             <div class="kpi">
               <div class="big">Seg–Ter</div>
               <div class="small">Pedidos → entrega na <b>quarta</b></div>
@@ -358,7 +479,7 @@ h1, h2, h3{
             </div>
             <div class="kpi">
               <div class="big">🎓 Frete</div>
-              <div class="small">Reduzido para estudantes</div>
+              <div class="small">Reduzido p/ estudantes</div>
             </div>
             <div class="kpi">
               <div class="big">🔁 Troca</div>
@@ -366,18 +487,24 @@ h1, h2, h3{
             </div>
           </div>
         </div>
-      </aside>
-    </main>
+      </div>
+    </div>
 
-    <section id="tamanhos" class="section reveal">
-      <h2>📦 Tamanhos (sem preço na página)</h2>
-      <div class="muted">Valores e itens da semana são informados no WhatsApp. Cesta semi-flexível (1 troca).</div>
+    <!-- TAMANHOS -->
+    <section id="tamanhos" class="block reveal">
+      <div class="blockTitle">
+        <div>
+          <h3>📦 Escolha seu tamanho</h3>
+          <div class="muted">Sem preço na página — você recebe os itens e o valor direto no WhatsApp.</div>
+        </div>
+        <div class="pill">⭐ Dica: <b>M</b> é a mais pedida</div>
+      </div>
 
       <div class="cards">
         <div class="card reveal">
           <div class="tag">🟢 P • ~7 itens</div>
-          <h3>Ideal para 1–2 pessoas</h3>
-          <div class="muted">Prática pra manter a semana em dia.</div>
+          <h4>Ideal para 1–2 pessoas</h4>
+          <div class="muted">Prática pra semana.</div>
           <ul>
             <li>~7 itens frescos</li>
             <li>1 troca por item similar</li>
@@ -386,8 +513,8 @@ h1, h2, h3{
 
         <div class="card reveal">
           <div class="tag">🟡 M • ~11 itens • mais pedida</div>
-          <h3>Ideal para 2–3 pessoas</h3>
-          <div class="muted">Equilíbrio perfeito de variedade.</div>
+          <h4>Ideal para 2–3 pessoas</h4>
+          <div class="muted">Variedade e custo-benefício.</div>
           <ul>
             <li>~11 itens</li>
             <li>1 troca por item similar</li>
@@ -396,8 +523,8 @@ h1, h2, h3{
 
         <div class="card reveal">
           <div class="tag">🔵 G • ~15 itens</div>
-          <h3>Ideal para república</h3>
-          <div class="muted">Mais diversidade e volume.</div>
+          <h4>Ideal para república</h4>
+          <div class="muted">Mais volume e diversidade.</div>
           <ul>
             <li>~15 itens</li>
             <li>1 troca por item similar</li>
@@ -405,40 +532,56 @@ h1, h2, h3{
         </div>
       </div>
 
-      <div style="margin-top:14px">
+      <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
         <a class="btn btnPrimary" href="https://wa.me/55SEUDDDSEUNUMERO?text=Oi!+Quero+saber+a+Cesta+da+Semana+(P/M/G)+🥬+Sou+estudante.+Faculdade:+____+Bairro:+____">
           👉 Quero saber a Cesta da Semana
         </a>
+        <span class="micro">🎓 Frete reduzido para estudantes (informe sua faculdade)</span>
       </div>
     </section>
 
-    <section class="section reveal">
-      <h2>🔄 Como funciona</h2>
+    <!-- COMO FUNCIONA -->
+    <section id="como" class="block reveal">
+      <div class="blockTitle">
+        <div>
+          <h3>🔄 Como funciona</h3>
+          <div class="muted">Rápido e sem burocracia.</div>
+        </div>
+      </div>
+
       <div class="steps">
         <div class="step reveal">
           <div class="num">1</div>
-          <div style="font-weight:1000;">Chame no WhatsApp</div>
-          <div class="muted" style="margin-top:6px;">Envie P/M/G + faculdade + bairro.</div>
+          <div class="stepTitle">Chame no WhatsApp</div>
+          <div class="stepText">Envie P/M/G + faculdade + bairro.</div>
         </div>
+
         <div class="step reveal">
           <div class="num">2</div>
-          <div style="font-weight:1000;">Ajuste 1 item</div>
-          <div class="muted" style="margin-top:6px;">Troca por item similar, conforme a semana.</div>
+          <div class="stepTitle">Ajuste 1 item</div>
+          <div class="stepText">Troca por item similar, conforme a semana.</div>
         </div>
+
         <div class="step reveal">
           <div class="num">3</div>
-          <div style="font-weight:1000;">Receba em casa</div>
-          <div class="muted" style="margin-top:6px;">Seg/ter → qua • qua/qui → sex.</div>
+          <div class="stepTitle">Receba na quarta ou sexta</div>
+          <div class="stepText">Seg/ter → qua • qua/qui → sex.</div>
         </div>
       </div>
     </section>
 
-    <section class="section reveal">
-      <h2>❓ Perguntas rápidas</h2>
+    <!-- FAQ -->
+    <section id="faq" class="block reveal">
+      <div class="blockTitle">
+        <div>
+          <h3>❓ Dúvidas rápidas</h3>
+          <div class="muted">Transparente e simples.</div>
+        </div>
+      </div>
 
       <details class="reveal">
         <summary>Como funciona o frete reduzido para estudantes?</summary>
-        <p>Informe sua faculdade no WhatsApp (podemos pedir comprovação simples). O valor do frete vai junto com a cesta.</p>
+        <p>Você informa sua faculdade no WhatsApp (podemos pedir comprovação simples). O valor do frete vai junto com os itens e o valor da cesta.</p>
       </details>
 
       <details class="reveal">
@@ -447,23 +590,24 @@ h1, h2, h3{
       </details>
 
       <details class="reveal">
-        <summary>Quando entregam?</summary>
-        <p><b>Pedidos seg/ter → entrega quarta.</b> <b>Pedidos qua/qui → entrega sexta.</b></p>
+        <summary>Como vejo os itens e valores da semana?</summary>
+        <p>Direto no WhatsApp. Você escolhe P/M/G e enviamos a lista da semana + valor.</p>
       </details>
 
       <details class="reveal">
-        <summary>Como vejo itens e valores?</summary>
-        <p>Direto no WhatsApp. Você escolhe P/M/G e enviamos a lista da semana + valor.</p>
+        <summary>Quais dias de pedido e entrega?</summary>
+        <p><b>Pedidos seg/ter → entrega quarta.</b> <b>Pedidos qua/qui → entrega sexta.</b></p>
       </details>
     </section>
 
     <div class="footer reveal">
       <div>© <span id="year"></span> Cesta da Semana • Atendimento via WhatsApp</div>
-      <div>Compartilhe nos grupos da sua faculdade 😉</div>
+      <div>Dica: compartilhe o link nos grupos da faculdade 😉</div>
     </div>
   </div>
 
-  <div class="float">
+  <!-- FLOATING CTA -->
+  <div class="float" role="navigation" aria-label="Atalho WhatsApp">
     <div class="floatInner">
       <div>
         <div class="floatText">Quer saber a cesta desta semana?</div>
@@ -476,9 +620,10 @@ h1, h2, h3{
   </div>
 
   <script>
+    // ano
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Reveal suave ao rolar
+    // reveal suave
     const els = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver((entries) => {
       for (const e of entries){
