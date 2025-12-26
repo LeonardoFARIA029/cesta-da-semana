@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cesta da Semana | Hortifruti para Universitários</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .cta {
+      background: #25D366;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .box {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <span class="badge">🎓 Frete reduzido para estudantes</span>
+
+    <h1>🥬 Cesta da Semana para Universitários</h1>
+    <p>Frutas, legumes e verduras frescos, entregues na sua casa.  
+    Prático, econômico e direto pelo WhatsApp.</p>
+
+    <a class="cta" href="https://wa.me/55SEUDDDSEUNUMERO?text=Oi!+Vim+pela+Cesta+da+Semana+🥬+Sou+estudante+e+quero+saber+as+opções!">
+      👉 Quero saber a Cesta da Semana
+    </a>
+
+    <div class="box">
+      <h3>📦 Tamanhos disponíveis</h3>
+      <p><strong>P:</strong> 7 itens • 1 troca</p>
+      <p><strong>M:</strong> 11 itens • mais pedida</p>
+      <p><strong>G:</strong> 15 itens • ideal para repúblicas</p>
+      <p><em>Valores informados no WhatsApp.</em></p>
+    </div>
+
+    <div class="box">
+      <h3>🔄 Como funciona</h3>
+      <p>1️⃣ Chame no WhatsApp</p>
+      <p>2️⃣ Escolha P, M ou G</p>
+      <p>3️⃣ Receba na quarta ou sexta</p>
+    </div>
+
+  </div>
+</body>
+</html>
